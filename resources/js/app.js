@@ -10,6 +10,7 @@ import TaskListComponent from "./components/TaskListComponent";
 import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
+import Login from "./components/Login";
 
 window.Vue = require("vue");
 Vue.component("header_com", HeaderComponent);
@@ -39,6 +40,11 @@ const router = new VueRouter({
             name: "task.edit",
             component: TaskEditComponent,
             props: true
+        },
+        {
+            path: "/user/login",
+            name: "login",
+            component: Login
         }
     ]
 });
