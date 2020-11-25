@@ -11,6 +11,7 @@ import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 window.Vue = require("vue");
 Vue.component("header_com", HeaderComponent);
@@ -45,6 +46,11 @@ const router = new VueRouter({
             path: "/user/login",
             name: "login",
             component: Login
+        },
+        {
+            path: "/user/register",
+            name: "register",
+            component: Register
         }
     ]
 });
