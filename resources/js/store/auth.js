@@ -7,7 +7,12 @@ const mutations = {
         state.user = user;
     }
 };
-const actions = {};
+const actions = {
+    async register(context, data) {
+        const response = await axios.post("/api/register", data);
+        context.commit("setUser", response.data);
+    }
+};
 export default {
     namespaced: true,
     state,
