@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 require("./bootstrap");
+import "./bootstrap";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 import HeaderComponent from "./components/HeaderComponent";
