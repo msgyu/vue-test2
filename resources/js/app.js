@@ -13,6 +13,7 @@ import TaskShowComponent from "./components/TaskShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import store from "./store";
 
 window.Vue = require("vue");
 Vue.component("header_com", HeaderComponent);
