@@ -5,6 +5,7 @@
  */
 require("./bootstrap");
 import VueRouter from "vue-router";
+import Vuex from "vuex";
 import HeaderComponent from "./components/HeaderComponent";
 import TaskListComponent from "./components/TaskListComponent";
 import TaskCreateComponent from "./components/TaskCreateComponent";
