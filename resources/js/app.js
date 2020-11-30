@@ -4,12 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 require("./bootstrap");
+import "./bootstrap";
 import VueRouter from "vue-router";
+import Vuex from "vuex";
 import HeaderComponent from "./components/HeaderComponent";
 import TaskListComponent from "./components/TaskListComponent";
 import TaskCreateComponent from "./components/TaskCreateComponent";
 import TaskShowComponent from "./components/TaskShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import store from "./store";
 
 window.Vue = require("vue");
 Vue.component("header_com", HeaderComponent);
@@ -39,6 +44,16 @@ const router = new VueRouter({
             name: "task.edit",
             component: TaskEditComponent,
             props: true
+        },
+        {
+            path: "/user/login",
+            name: "login",  
+            component: Login
+        },
+        {
+            path: "/user/register",
+            name: "register",
+            component: Register
         }
     ]
 });
