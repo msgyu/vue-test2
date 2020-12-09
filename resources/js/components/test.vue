@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <p>aaaa</p>
+</template>
 
 <script>
 export default {};
