@@ -14,6 +14,7 @@ import TaskShowComponent from "./components/TaskShowComponent";
 import TaskEditComponent from "./components/TaskEditComponent";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import test from "./components/test";
 import store from "./store";
 
 window.Vue = require("vue");
@@ -23,6 +24,11 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: "history",
     routes: [
+        {
+            path: "/test",
+            name: "test",
+            component: test
+        },
         {
             path: "/tasks",
             name: "task.list",
@@ -47,7 +53,7 @@ const router = new VueRouter({
         },
         {
             path: "/user/login",
-            name: "login",  
+            name: "login",
             component: Login
         },
         {
