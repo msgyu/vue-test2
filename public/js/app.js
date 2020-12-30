@@ -2198,6 +2198,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2299,6 +2322,21 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39403,7 +39441,7 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Submit")]
+              [_vm._v("\n                    Submit\n                ")]
             )
           ]
         )
@@ -39608,7 +39646,10 @@ var render = function() {
                   "router-link",
                   {
                     attrs: {
-                      to: { name: "task.show", params: { taskId: task.id } }
+                      to: {
+                        name: "task.show",
+                        params: { taskId: task.id }
+                      }
                     }
                   },
                   [
@@ -39628,7 +39669,10 @@ var render = function() {
                   "router-link",
                   {
                     attrs: {
-                      to: { name: "task.edit", params: { taskId: task.id } }
+                      to: {
+                        name: "task.edit",
+                        params: { taskId: task.id }
+                      }
                     }
                   },
                   [
@@ -39652,7 +39696,11 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Delete")]
+                [
+                  _vm._v(
+                    "\n                        Delete\n                    "
+                  )
+                ]
               )
             ])
           ])
@@ -56436,7 +56484,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 var app = new Vue({
   el: "#app",
-  router: router
+  router: router,
+  store: _store__WEBPACK_IMPORTED_MODULE_10__["default"]
 });
 
 /***/ }),
@@ -57168,8 +57217,8 @@ function getCookieValue(searchKey) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/vue/vue-test2/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/vue/vue-test2/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Library/Project/laravel/mentee-vue-test2/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Library/Project/laravel/mentee-vue-test2/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

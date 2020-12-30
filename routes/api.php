@@ -17,15 +17,14 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::group(['middleware' => ['auth:airlock']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user', function (Request $request) {
         return response()->json(['user' => $request->user()]);
     });
     Route::post('logout', 'Auth\Api\LoginController@logout')->name('api.logout');
 });
 
-Route::post('/register', 'Auth\RegisterController@register')->name('register');
-Route::post('/login', 'Auth\LoginController@login')->name('login');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/register', 'Auth\Api\RegisterController@register')->name('register');
+Route::post('/login', 'Auth\Api\LoginController@login')->name('login');
 
 Route::resource('tasks', 'TaskController');
