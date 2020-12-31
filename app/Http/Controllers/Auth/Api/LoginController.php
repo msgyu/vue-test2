@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Auth\Api;
 
-use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-
     /**
      * Handle a login request to the application.
      *
@@ -24,18 +22,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validateLogin($request);
-
         $user = User::where('email', $request->email)->first();
-
         if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => [__('failed')],
             ]);
         }
-
-        $token = $user->createToken($request->device_name)->plainTextToken;
-
-        return response()->json(['token' => $token, 'user' => $user], 200);
+        $token = $user->createToken('app')->plainTextToken;
+        return json_encode(['token' => $token, 'user' => $user]);
     }
 
     /**
@@ -50,9 +44,8 @@ class LoginController extends Controller
     {
 
         $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-            'device_name' => 'required'
+            'email' => 'required|string',
+            'password' => 'required|string'
         ]);
     }
 

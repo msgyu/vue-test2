@@ -20,7 +20,9 @@ class RegisterController extends Controller
         // ユーザーの作成とトークンの作成します
         $data = DB::transaction(function () use ($request) {
             $user = $this->create($request->all());
-            $token = $user->createToken($request->device_nam)->plainTextToken;
+            // トークン名称は任意のものを指定
+            // デバイス毎の値は取得できないです
+            $token = $user->createToken('app')->plainTextToken;
             return json_encode(['token' => $token, 'user' => $user]);
         });
 
@@ -39,7 +41,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'device_name' => ['required']
         ]);
     }
 
