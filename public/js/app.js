@@ -57217,8 +57217,8 @@ function getCookieValue(searchKey) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Library/Project/laravel/mentee-vue-test2/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Library/Project/laravel/mentee-vue-test2/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/vue/vue-test2/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/vue/vue-test2/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
