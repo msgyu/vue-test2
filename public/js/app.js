@@ -57044,12 +57044,16 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var state = {
-  user: null
+  user: null,
+  token: window.localStorage.getItem("token")
 };
 var getters = {};
 var mutations = {
   setUser: function setUser(state, user) {
     state.user = user;
+  },
+  setToken: function setToken(state, token) {
+    window.localStorage.setItem("token", token);
   }
 };
 var actions = {
@@ -57065,9 +57069,11 @@ var actions = {
 
             case 2:
               response = _context.sent;
-              context.commit("setUser", response.data);
+              context.commit("setUser", response.data.user);
+              context.commit("setToken", response.data.token);
+              console.log(response);
 
-            case 4:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -57087,9 +57093,11 @@ var actions = {
 
             case 2:
               response = _context2.sent;
-              context.commit("setUser", response.data);
+              context.commit("setUser", response.data.user);
+              context.commit("setToken", response.data.token);
+              console.log(response);
 
-            case 4:
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -57099,19 +57107,22 @@ var actions = {
   },
   logout: function logout(context) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
-              return axios.post("/api/logout");
+              axios.post("/api/logout", null, {
+                headers: {
+                  Authorization: "Bearer ".concat(state.token)
+                }
+              }).then(function (result) {
+                context.commit("setUser", null);
+                context.commit("setToken", null);
+              })["catch"](function (error) {
+                console.log("Error! HTTP Status: ".concat(error));
+              });
 
-            case 2:
-              response = _context3.sent;
-              context.commit("setUser", null);
-
-            case 4:
+            case 1:
             case "end":
               return _context3.stop();
           }

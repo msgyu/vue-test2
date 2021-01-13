@@ -17,15 +17,30 @@ const mutations = {
 const actions = {
     async register(context, data) {
         const response = await axios.post("/api/register", data);
-        context.commit("setUser", response.data);
+        context.commit("setUser", response.data.user);
+        context.commit("setToken", response.data.token);
+        console.log(response);
     },
     async login(context, data) {
         const response = await axios.post("/api/login", data);
-        context.commit("setUser", response.data);
+        context.commit("setUser", response.data.user);
+        context.commit("setToken", response.data.token);
+        console.log(response);
     },
     async logout(context) {
-        const response = await axios.post("/api/logout");
-        context.commit("setUser", null);
+        axios
+            .post("/api/logout", null, {
+                headers: {
+                    Authorization: `Bearer ${state.token}`
+                }
+            })
+            .then(result => {
+                context.commit("setUser", null);
+                context.commit("setToken", null);
+            })
+            .catch(error => {
+                console.log(`Error! HTTP Status: ${error}`);
+            });
     }
 };
 

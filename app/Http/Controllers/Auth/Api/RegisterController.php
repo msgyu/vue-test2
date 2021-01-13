@@ -20,6 +20,8 @@ class RegisterController extends Controller
         // ユーザーの作成とトークンの作成します
         $data = DB::transaction(function () use ($request) {
             $user = $this->create($request->all());
+            // User::select(‘id’)->find(id);
+            $user->only(['name', 'email']);
             // トークン名称は任意のものを指定
             // デバイス毎の値は取得できないです
             $token = $user->createToken('app')->plainTextToken;
