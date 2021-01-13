@@ -1,5 +1,6 @@
 const state = {
-    user: null
+    user: null,
+    token: window.localStorage.getItem("token")
 };
 
 const getters = {};
