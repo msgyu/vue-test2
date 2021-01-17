@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{any}', function () {
     return view('app');
 })->where('any', '.*');
+// 正規表現'.*'は任意の文字が0回以上
 
 Auth::routes();
 
