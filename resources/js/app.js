@@ -19,6 +19,8 @@ import store from "./store";
 window.Vue = require("vue");
 Vue.component("header_com", HeaderComponent);
 Vue.use(VueRouter);
+Vue.prototype.$http = axios;
+axios.defaults.headers.common["Authorization"] = `Bearer ${state.token}`;
 
 const router = new VueRouter({
     mode: "history",
@@ -47,7 +49,7 @@ const router = new VueRouter({
         },
         {
             path: "/user/login",
-            name: "login",  
+            name: "login",
             component: Login
         },
         {
