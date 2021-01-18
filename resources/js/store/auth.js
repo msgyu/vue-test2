@@ -3,7 +3,14 @@ const state = {
     token: window.localStorage.getItem("token")
 };
 
-const getters = {};
+const getters = {
+    token(state) {
+        return state.token;
+    },
+    user(state) {
+        return state.user;
+    }
+};
 
 const mutations = {
     setUser(state, user) {
@@ -16,19 +23,19 @@ const mutations = {
 
 const actions = {
     async register(context, data) {
-        const response = await $http.post("/api/register", data);
+        const response = await axios.post("/api/register", data);
         context.commit("setUser", response.data.user);
         context.commit("setToken", response.data.token);
         console.log(response);
     },
     async login(context, data) {
-        const response = await $http.post("/api/login", data);
+        const response = await axios.post("/api/login", data);
         context.commit("setUser", response.data.user);
         context.commit("setToken", response.data.token);
         console.log(response);
     },
     async logout(context) {
-        $http
+        axios
             .post("/api/logout", null, {
                 headers: {
                     Authorization: `Bearer ${state.token}`
