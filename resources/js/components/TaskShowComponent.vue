@@ -61,9 +61,15 @@ export default {
   },
   methods: {
     getTask() {
-      axios.get("/api/tasks/" + this.taskId).then(res => {
-        this.task = res.data;
-      });
+      axios
+        .get("/api/tasks/" + this.taskId, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.auth.token}`
+          }
+        })
+        .then(res => {
+          this.task = res.data;
+        });
     }
   },
   mounted() {

@@ -2483,7 +2483,11 @@ __webpack_require__.r(__webpack_exports__);
     getTask: function getTask() {
       var _this = this;
 
-      axios.get("/api/tasks/" + this.taskId).then(function (res) {
+      axios.get("/api/tasks/" + this.taskId, {
+        headers: {
+          Authorization: "Bearer ".concat(this.$store.state.auth.token)
+        }
+      }).then(function (res) {
         _this.task = res.data;
       });
     }
