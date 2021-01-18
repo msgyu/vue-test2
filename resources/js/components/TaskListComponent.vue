@@ -56,10 +56,11 @@ export default {
   },
   methods: {
     getTasks() {
-      $http
-        .get("/api/tasks", null, {
+      console.log(this.$store.state.token);
+      axios
+        .get("/api/tasks", {
           headers: {
-            Authorization: `Bearer ${state.token}`
+            Authorization: `Bearer ${this.$store.state.token}`
           }
         })
         .then(res => {
@@ -67,7 +68,7 @@ export default {
         });
     },
     deleteTask(id) {
-      $http.delete("/api/tasks/" + id).then(res => {
+      axios.delete("/api/tasks/" + id).then(res => {
         this.getTasks();
       });
     }
