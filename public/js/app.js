@@ -2371,11 +2371,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2386,7 +2381,12 @@ __webpack_require__.r(__webpack_exports__);
     getTasks: function getTasks() {
       var _this = this;
 
-      axios.get("/api/tasks").then(function (res) {
+      console.log(this.$store.state.token);
+      axios.get("/api/tasks", {
+        headers: {
+          Authorization: "Bearer ".concat(this.$store.state.token)
+        }
+      }).then(function (res) {
         _this.tasks = res.data;
       });
     },
@@ -39696,11 +39696,7 @@ var render = function() {
                     }
                   }
                 },
-                [
-                  _vm._v(
-                    "\n                        Delete\n                    "
-                  )
-                ]
+                [_vm._v("Delete")]
               )
             ])
           ])
@@ -57047,7 +57043,14 @@ var state = {
   user: null,
   token: window.localStorage.getItem("token")
 };
-var getters = {};
+var getters = {
+  token: function token(state) {
+    return state.token;
+  },
+  user: function user(state) {
+    return state.user;
+  }
+};
 var mutations = {
   setUser: function setUser(state, user) {
     state.user = user;
