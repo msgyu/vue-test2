@@ -2377,14 +2377,19 @@ __webpack_require__.r(__webpack_exports__);
       tasks: []
     };
   },
+  computed: {
+    setToken: function setToken() {
+      return this.$store.state.auth.token;
+    }
+  },
   methods: {
     getTasks: function getTasks() {
       var _this = this;
 
-      console.log(this.$store.state.token);
+      console.log(this.$store.state.auth.token);
       axios.get("/api/tasks", {
         headers: {
-          Authorization: "Bearer ".concat(this.$store.state.token)
+          Authorization: "Bearer ".concat(this.$store.state.auth.token)
         }
       }).then(function (res) {
         _this.tasks = res.data;

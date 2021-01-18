@@ -54,13 +54,18 @@ export default {
       tasks: []
     };
   },
+  computed: {
+    setToken() {
+      return this.$store.state.auth.token;
+    }
+  },
   methods: {
     getTasks() {
-      console.log(this.$store.state.token);
+      console.log(this.$store.state.auth.token);
       axios
         .get("/api/tasks", {
           headers: {
-            Authorization: `Bearer ${this.$store.state.token}`
+            Authorization: `Bearer ${this.$store.state.auth.token}`
           }
         })
         .then(res => {
